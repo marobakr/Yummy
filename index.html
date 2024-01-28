@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
+
+    <meta name="author" content="Marwan Abubakr" />
+    <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon" />
+    <title>Yummy</title>
+    <!-- ?======== Bootstrap css ========  -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <!-- ?======== Font Awsom ========  -->
+    <link rel="stylesheet" href="./css/all.min.css" />
+    <!-- ?======== Main Css ========  -->
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+
+  <body>
+    <!-- ^======== Start Navbar ========  -->
+    <div id="loding ">
+      <span class="loader"></span>
+    </div>
+    <nav class="d-flex position-fixed justify-content-end">
+      <div class="side-hidden bg-black text-white">
+        <div class="d-flex flex-column justify-content-between py-4 h-100">
+          <ul class="menu text-white">
+            <li id="search" class="py-1" role="button">Search</li>
+            <li id="categories" class="py-1" role="button">Categories</li>
+            <li id="area" class="py-1" role="button">Area</li>
+            <li id="ingredients" class="py-1" role="button">Ingredients</li>
+            <li id="contact" class="py-1" role="button">Contact us</li>
+          </ul>
+          <div class="footer-nav px-3">
+            <div class="icon white-space">
+              <span>
+                <i class="fa-brands fa-facebook"></i>
+              </span>
+              <span>
+                <i class="fa-brands fa-twitter"></i>
+              </span>
+              <span>
+                <i class="fa-solid fa-globe"></i>
+              </span>
+            </div>
+            <p class="white-space">
+              Copyright
+              <br />Â© 2019 All Rights Reserved.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="side-show bg-white d-flex flex-column align-items-center justify-content-between px-2"
+      >
+        <figure class="mb-0 w-100">
+          <img class="w-100" src="./images/logo.png" alt="logo" />
+        </figure>
+        <span id="toggleopen" class="position-relative">
+          <i role="button" class="close-side fa-solid fa-2x fa-x px-2"></i>
+          <i
+            role="button"
+            class="open-side fa-solid fa-2x fa-align-justify px-2"
+          ></i>
+        </span>
+        <div class="icons">
+          <span>
+            <i class="fa-solid fa-globe d-block"></i>
+          </span>
+          <span>
+            <i class="fa-solid fa-share-nodes"></i>
+          </span>
+        </div>
+      </div>
+    </nav>
+    <!-- Hero Section -->
+    <main>
+      <div class="container">
+        <div id="hero">
+          <!-- Start Dta By Search -->
+          <div id="formsearch" class="form d-none mb-5">
+            <div class="row">
+              <div class="col-md-6">
+                <input
+                  id="searchName"
+                  class="form-control bg-transparent text-white"
+                  type="text"
+                  placeholder="Search By Name"
+                />
+              </div>
+              <div class="col-md-6">
+                <input
+                  maxlength="1"
+                  id="searFirstLetter"
+                  class="form-control bg-transparent text-white"
+                  type="text"
+                  placeholder="Search By First Letter"
+                />
+              </div>
+            </div>
+          </div>
+          <!-- End Dta By Search -->
+
+          <!-- Start All Data -->
+          <div id="alldata" class="row gy-4"></div>
+          <!-- End All Data -->
+
+          <!-- Start Details Meals -->
+          <div id="details" class="details"></div>
+          <!-- End Details Meals -->
+        </div>
+
+        <div
+          class="d-none formValidation d-flex justify-content-center align-items-center"
+        >
+          <div class="row">
+            <div class="col-lg-6">
+              <input
+                id="name"
+                class="form-control light-mode mb-3"
+                type="text"
+                placeholder="Enter Your Name"
+              />
+              <p
+                id="validation-name"
+                class="light-mode alert alert-danger d-none"
+              >
+                Special characters and numbers not allowed
+              </p>
+            </div>
+            <div class="col-lg-6">
+              <input
+                id="email"
+                class="form-control light-mode mb-3"
+                type="email"
+                placeholder="Enter Your Email"
+              />
+              <p
+                id="validation-email"
+                class="light-mode alert alert-danger d-none"
+              >
+                Email not valid *exemple@yyy.zzz
+              </p>
+            </div>
+            <div class="col-lg-6">
+              <input
+                id="phone"
+                class="form-control light-mode mb-3"
+                type="number"
+                placeholder="Enter Your Phone"
+              />
+              <p
+                id="validation-phone"
+                class="light-mode alert alert-danger d-none"
+              >
+                Enter valid Phone Number
+              </p>
+            </div>
+            <div class="col-lg-6">
+              <input
+                id="age"
+                class="form-control light-mode mb-3"
+                type="number"
+                placeholder="Enter Your Ege"
+              />
+              <p
+                id="validation-age"
+                class="light-mode alert alert-danger d-none"
+              >
+                Enter valid age
+              </p>
+            </div>
+            <div class="col-lg-6">
+              <input
+                id="password"
+                class="form-control light-mode mb-3"
+                type="password"
+                placeholder="Enter Your Password"
+              />
+              <p
+                id="validation-password"
+                class="light-mode alert alert-danger d-none"
+              >
+                Enter valid password *Minimum eight characters, at least one
+                letter and one number:*
+              </p>
+            </div>
+            <div class="col-lg-6">
+              <input
+                id="repassword"
+                class="form-control light-mode mb-3"
+                type="password"
+                placeholder="RePassword"
+              />
+              <p
+                id="validation-repassword"
+                class="light-mode alert alert-danger d-none"
+              >
+                Enter valid repassword
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- ^======== End Navbar ========  -->
+
+    <!-- *======== jquery JS ========  -->
+    <script src="./js/./jquery-3.7.1.min.js"></script>
+    <!-- * ======== bootstrap JS ========  -->
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <!-- * ======== Main JS ========  -->
+    <script src="./js/./index.js"></script>
+  </body>
+</html>
