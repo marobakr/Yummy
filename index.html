@@ -18,18 +18,18 @@
 
   <body>
     <!-- ^======== Start Navbar ========  -->
-    <div id="loding ">
+    <div id="loding">
       <span class="loader"></span>
     </div>
     <nav class="d-flex position-fixed justify-content-end">
       <div class="side-hidden bg-black text-white">
         <div class="d-flex flex-column justify-content-between py-4 h-100">
           <ul class="menu text-white">
-            <li id="search" class="py-1" role="button">Search</li>
-            <li id="categories" class="py-1" role="button">Categories</li>
-            <li id="area" class="py-1" role="button">Area</li>
-            <li id="ingredients" class="py-1" role="button">Ingredients</li>
-            <li id="contact" class="py-1" role="button">Contact us</li>
+            <li id="search" class="py-2" role="button">Search</li>
+            <li id="categories" class="py-2" role="button">Categories</li>
+            <li id="area" class="py-2" role="button">Area</li>
+            <li id="ingredients" class="py-2" role="button">Ingredients</li>
+            <li id="contact" class="py-2" role="button">Contact us</li>
           </ul>
           <div class="footer-nav px-3">
             <div class="icon white-space">
@@ -111,7 +111,8 @@
         </div>
 
         <div
-          class="d-none formValidation d-flex justify-content-center align-items-center"
+          id="formValidation"
+          class="formValidation d-none d-flex justify-content-center align-items-center"
         >
           <div class="row">
             <div class="col-lg-6">
@@ -198,6 +199,9 @@
               >
                 Enter valid repassword
               </p>
+            </div>
+            <div class="col-12 text-center">
+              <button id="submit" class="btn btn-danger pe-none">Submit</button>
             </div>
           </div>
         </div>

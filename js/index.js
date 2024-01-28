@@ -3,18 +3,6 @@
 
 const parent = document.querySelector('#alldata');
 const details = document.getElementById('details');
-const nameFormInput = document.getElementById('name');
-const emailFormInput = document.getElementById('email');
-const phoneFormInput = document.getElementById('phone');
-const ageFormInput = document.getElementById('age');
-const passwordFormInput = document.getElementById('password');
-const repasswordFormInput = document.getElementById('repassword');
-const valiName = document.getElementById('validation-name');
-const valiEmail = document.getElementById('validation-email');
-const valiPhone = document.getElementById('validation-phone');
-const valiAge = document.getElementById('validation-age');
-const valiPassword = document.getElementById('validation-password');
-const valiRePassword = document.getElementById('validation-repassword');
 
 //~/*========== EVENT ========== */
 $('.open-side').on('click', () => {
@@ -27,8 +15,9 @@ $('.close-side').on('click', () => {
 $('#search').on('click', () => {
   $('#alldata').fadeOut(100);
   $('#details').fadeOut(100);
-
   $('#formsearch').removeClass('d-none');
+  $('#formValidation').addClass('d-none');
+
   showFormSearch();
   $('#searchName').val('');
   $('#searFirstLetter').val('');
@@ -47,9 +36,14 @@ $('#ingredients').on('click', () => {
   $('#formsearch').addClass('d-none');
   ListBy('i');
 });
+$('#contact').on('click', () => {
+  $('#alldata').fadeOut(100);
+  $('#details').fadeOut(100);
+  setTimeout(closeNav, 280);
+  $('#formValidation').removeClass('d-none');
+});
 
 // * =============> GLOBAL FUNCTION  ===============>
-baseUrlApi();
 async function getIdDetails(id) {
   StartLoding();
   const api = await fetch(
@@ -188,6 +182,7 @@ async function baseUrlApi() {
   displayGlobalData(meals);
   EndLoding();
 }
+baseUrlApi();
 
 async function filterBy(q, strCategory) {
   StartLoding();
@@ -256,6 +251,11 @@ function openNav() {
   $('.open-side').animate({ height: 'toggle' }, 500, () => {
     $('.close-side').animate({ height: 'toggle' });
   });
+  for (let i = 0; i <= 5; i++) {
+    $('nav ul li')
+      .eq(i)
+      .animate({ top: 0 }, (i + 5) * 100);
+  }
 }
 function closeNav() {
   let widthSize = $('.side-hidden').innerWidth();
@@ -263,6 +263,7 @@ function closeNav() {
   $('.close-side').animate({ height: 'toggle' }, 500, () => {
     $('.open-side').animate({ height: 'toggle' });
   });
+  $('nav ul li').animate({ top: '300px' }, 300);
 }
 closeNav();
 
@@ -406,114 +407,140 @@ function EndLoding() {
 }
 
 //& /*========== GLOBAL VALIDAIONS FUNCTION ========== */
+
+let check = false;
 function checkValidationIsTrue(thisTarget) {
-  thisTarget.classList.add('is-valid');
-  thisTarget.classList.remove('is-invalid');
+  if (typeof thisTarget === 'object') {
+    thisTarget.classList.add('is-valid');
+    thisTarget.classList.remove('is-invalid');
+  }
 }
 function checkValidationIsFalse(thisTarget) {
-  thisTarget.classList.remove('is-valid');
-  thisTarget.classList.add('is-invalid');
+  if (typeof thisTarget === 'object') {
+    thisTarget.classList.remove('is-valid');
+    thisTarget.classList.add('is-invalid');
+  }
 }
 
 //~ Name Validation
-$(nameFormInput).on('input', function (e) {
+$('#name').on('input', function (e) {
   validationName(e.target.value, this);
+  preventBtn();
 });
 function validationName(value, thisTarget) {
   var regx = /^[a-zA-Z\s]+$/;
   if (regx.test(value)) {
     checkValidationIsTrue(thisTarget);
-    valiName.classList.add('d-none');
+    $('#validation-name').addClass('d-none');
     return true;
   } else {
-    checkValidationIsTrue(thisTarget);
-    valiName.classList.remove('d-none');
+    checkValidationIsFalse(thisTarget);
+    $('#validation-name').removeClass('d-none');
+
     return false;
   }
 }
 
 //~ Email Validation
-$(emailFormInput).on('input', function (e) {
+$('#email').on('input', function (e) {
   validationEmail(e.target.value, this);
+  preventBtn();
 });
 function validationEmail(value, thisTarget) {
   var regx = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
   if (regx.test(value)) {
     checkValidationIsTrue(thisTarget);
-    valiEmail.classList.add('d-none');
+    $('#validation-email').addClass('d-none');
     return true;
   } else {
     checkValidationIsFalse(thisTarget);
-    valiEmail.classList.remove('d-none');
+    $('#validation-email').removeClass('d-none');
     return false;
   }
 }
 
 //~ Phone Validation
-$(phoneFormInput).on('input', function (e) {
+$('#phone').on('input', function (e) {
   validationPhone(e.target.value, this);
+  preventBtn();
 });
 function validationPhone(value, thisTarget) {
   var regx = /^(\+20|0)?1[0-9]{9}$/;
   if (regx.test(value)) {
     checkValidationIsTrue(thisTarget);
-    valiPhone.classList.add('d-none');
+    $('#validation-phone').addClass('d-none');
     return true;
   } else {
     checkValidationIsFalse(thisTarget);
+    $('#validation-phone').removeClass('d-none');
+
     valiPhone.classList.remove('d-none');
     return false;
   }
 }
 
 //~ Age Validation
-$(ageFormInput).on('input', function (e) {
+$('#age').on('input', function (e) {
   validationAge(e.target.value, this);
+  preventBtn();
 });
 function validationAge(value, thisTarget) {
   if (value != '') {
     checkValidationIsTrue(thisTarget);
-    valiAge.classList.add('d-none');
+    $('#validation-age').addClass('d-none');
     return true;
   } else {
     checkValidationIsFalse(thisTarget);
-    valiAge.classList.remove('d-none');
+    $('#validation-age').removeClass('d-none');
     return false;
   }
 }
 
 //~ Password Validation
-$(passwordFormInput).on('input', function (e) {
+$('#password').on('input', function (e) {
   validationPassword(e.target.value, this);
-  console.log(e.target.value);
+  preventBtn();
 });
 function validationPassword(value, thisTarget) {
   let regx = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
   if (regx.test(value)) {
     checkValidationIsTrue(thisTarget);
-    valiPassword.classList.add('d-none');
+    $('#validation-password').addClass('d-none');
+
     return true;
   } else {
     checkValidationIsFalse(thisTarget);
-    valiPassword.classList.remove('d-none');
+    $('#validation-password').removeClass('d-none');
     return false;
   }
 }
 
 //~ RePassword Validation
-$(repasswordFormInput).on('input', function (e) {
+$('#repassword').on('input', function (e) {
   validationRePassword(e.target.value, this);
-  console.log(e.target.value);
+  preventBtn();
 });
 function validationRePassword(value, thisTarget) {
-  if (passwordFormInput.value === value) {
+  if ($('#password').val() === value) {
     checkValidationIsTrue(thisTarget);
-    valiPassword.classList.add('d-none');
+    $('#validation-repassword').addClass('d-none');
+
     return true;
   } else {
     checkValidationIsFalse(thisTarget);
-    valiPassword.classList.remove('d-none');
+    $('#validation-repassword').removeClass('d-none');
     return false;
+  }
+}
+function preventBtn() {
+  let num = document.querySelectorAll('.is-valid');
+  if (num.length === 6) {
+    $('#submit').removeClass('btn-danger');
+    $('#submit').removeClass('pe-none');
+    $('#submit').addClass('btn-outline-danger');
+  } else {
+    $('#submit').addClass('pe-none', 'btn-danger');
+    $('#submit').removeClass('btn-outline-danger');
+    $('#submit').addClass('btn-danger');
   }
 }

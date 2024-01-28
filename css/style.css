@@ -48,7 +48,7 @@ nav .side-hidden {
   width: 75%;
 }
 nav .side-hidden .menu li {
-  /* display: none; */
+  position: relative;
 }
 nav .side-hidden .white-space {
   white-space: nowrap;
