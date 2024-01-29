@@ -21,19 +21,26 @@ $('#search').on('click', () => {
   showFormSearch();
   $('#searchName').val('');
   $('#searFirstLetter').val('');
+  $('#formValidation').addClass('d-none');
+
   setTimeout(closeNav, 280);
 });
 
 $('#categories').on('click', () => {
   listAllMealCApi();
   $('#formsearch').addClass('d-none');
+  $('#formValidation').addClass('d-none');
+
 });
 $('#area').on('click', () => {
   $('#formsearch').addClass('d-none');
+  $('#formValidation').addClass('d-none');
   ListBy('a');
 });
 $('#ingredients').on('click', () => {
   $('#formsearch').addClass('d-none');
+  $('#formValidation').addClass('d-none');
+
   ListBy('i');
 });
 $('#contact').on('click', () => {
