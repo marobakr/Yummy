@@ -53,7 +53,7 @@ $('#contact').on('click', () => {
 async function getIdDetails(id) {
   if (document.querySelector('.open-side').style.display === 'none') {
     closeNav();
-  } 
+  }
 
   StartLoding();
   const api = await fetch(
@@ -242,22 +242,24 @@ async function ListBy(AOrI) {
 ^get Data letterOrName:
   Data From INput
 */
-async function searchApi(q = 's', letterOrName = 'a') {
-    if (document.querySelector('.open-side').style.display === 'none') {
-      closeNav();
-    } 
-  if (letterOrName != '') {
-    StartLoding();
-    const api = await fetch(
-      `https://www.themealdb.com/api/json/v1/1/search.php?${q}=${letterOrName}`
-    );
-    const respons = await api.json();
-    const meals = await respons.meals;
-    if (meals !== null) {
-      $('#alldata').fadeIn(100, () => {
-        displayGlobalData(meals);
-      });
-    }
+async function searchApi(q, letterOrName ) {
+  if (document.querySelector('.open-side').style.display === 'none') {
+    closeNav();
+  }
+  if (letterOrName === '') {
+    console.log(letterOrName);
+    letterOrName= "a"
+  }
+  StartLoding();
+  const api = await fetch(
+    `https://www.themealdb.com/api/json/v1/1/search.php?${q}=${letterOrName}`
+  );
+  const respons = await api.json();
+  const meals = await respons.meals;
+  if (meals !== null) {
+    $('#alldata').fadeIn(100, () => {
+      displayGlobalData(meals);
+    });
   }
   EndLoding();
 }
@@ -285,11 +287,11 @@ function closeNav() {
 }
 function showFormSearch() {
   // ----- Get Value Data From Usr Input -----
-  $('#searchName').on('input', function () {
+  $('#searchName').on('keyup', function () {
     let searchName = $(this).val().toLowerCase();
     searchApi('s', searchName);
   });
-  $('#searFirstLetter').on('input', function () {
+  $('#searFirstLetter').on('keyup', function () {
     let searchFirstLetter = $(this).val().toLowerCase();
     searchApi('f', searchFirstLetter);
   });
