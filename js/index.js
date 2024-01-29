@@ -45,6 +45,7 @@ $('#ingredients').on('click', () => {
 $('#contact').on('click', () => {
   $('#alldata').fadeOut(100);
   $('#details').fadeOut(100);
+  $('#formsearch').addClass('d-none');
   setTimeout(closeNav, 280);
   $('#formValidation').removeClass('d-none');
 });
@@ -242,13 +243,13 @@ async function ListBy(AOrI) {
 ^get Data letterOrName:
   Data From INput
 */
-async function searchApi(q, letterOrName ) {
+async function searchApi(q, letterOrName) {
   if (document.querySelector('.open-side').style.display === 'none') {
     closeNav();
   }
   if (letterOrName === '') {
     console.log(letterOrName);
-    letterOrName= "a"
+    letterOrName = 'a';
   }
   StartLoding();
   const api = await fetch(
@@ -503,7 +504,8 @@ $('#age').on('input', function (e) {
   preventBtn();
 });
 function validationAge(value, thisTarget) {
-  if (value != '') {
+  var regx = /^(?:[1-6]?\d|70)$/;
+  if (regx.test(value)) {
     checkValidationIsTrue(thisTarget);
     $('#validation-age').addClass('d-none');
     return true;
