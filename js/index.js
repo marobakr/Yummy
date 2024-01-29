@@ -51,6 +51,9 @@ $('#contact').on('click', () => {
 
 // * =============> GLOBAL FUNCTION  ===============>
 async function getIdDetails(id) {
+  if (document.querySelector('.open-side').style.display === 'none') {
+    closeNav();
+  } // closeNav()
   StartLoding();
   const api = await fetch(
     `https://themealdb.com/api/json/v1/1/lookup.php?i=${id}`
@@ -140,7 +143,6 @@ function displayDetails(responsForId) {
   });
 }
 function displayGlobalData(strCategory) {
-  $('#details').fadeOut(200);
   let output = strCategory
     .map((category) => {
       let { strMealThumb: img, strMeal, idMeal } = category;
@@ -202,6 +204,9 @@ async function filterBy(q, strCategory) {
   const meals = response.meals;
   displayGlobalData(meals);
   EndLoding();
+  if (document.querySelector('.open-side').style.display === 'none') {
+    closeNav();
+  }
 }
 async function listAllMealCApi() {
   StartLoding();
@@ -274,7 +279,6 @@ function closeNav() {
   });
   $('nav ul li').animate({ top: '300px' }, 300);
 }
-
 function showFormSearch() {
   // ----- Get Value Data From Usr Input -----
   $('#searchName').on('input', function () {
