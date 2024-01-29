@@ -53,7 +53,8 @@ $('#contact').on('click', () => {
 async function getIdDetails(id) {
   if (document.querySelector('.open-side').style.display === 'none') {
     closeNav();
-  } // closeNav()
+  } 
+
   StartLoding();
   const api = await fetch(
     `https://themealdb.com/api/json/v1/1/lookup.php?i=${id}`
@@ -242,6 +243,9 @@ async function ListBy(AOrI) {
   Data From INput
 */
 async function searchApi(q = 's', letterOrName = 'a') {
+    if (document.querySelector('.open-side').style.display === 'none') {
+      closeNav();
+    } 
   if (letterOrName != '') {
     StartLoding();
     const api = await fetch(
