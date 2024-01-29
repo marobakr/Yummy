@@ -27,4 +27,4 @@
 
 1. Clone the repository.
 2. Open `index.html` in a web browser.
-3. Explore the world of free-to-play games!
+

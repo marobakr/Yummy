@@ -406,8 +406,8 @@ function StartLoding() {
 }
 
 function EndLoding() {
-  $('.loader').fadeOut(100, () => {
-    $('#loding').fadeOut(100, () => {
+  $('.loader').fadeOut(80, () => {
+    $('#loding').fadeOut(80, () => {
       $('body').css('overflow', 'auto');
     });
   });
