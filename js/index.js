@@ -30,7 +30,6 @@ $('#categories').on('click', () => {
   listAllMealCApi();
   $('#formsearch').addClass('d-none');
   $('#formValidation').addClass('d-none');
-
 });
 $('#area').on('click', () => {
   $('#formsearch').addClass('d-none');
@@ -189,7 +188,10 @@ async function baseUrlApi() {
   displayGlobalData(meals);
   EndLoding();
 }
-baseUrlApi();
+$(window).on('load', () => {
+  closeNav();
+  baseUrlApi();
+});
 
 async function filterBy(q, strCategory) {
   StartLoding();
@@ -254,7 +256,7 @@ async function searchApi(q = 's', letterOrName = 'a') {
 //* /*========== FUNCTION ========== */
 
 function openNav() {
-  $('nav').animate({ left: `0` }, 500);
+  $('nav').animate({ left: `0px` }, 500);
   $('.open-side').animate({ height: 'toggle' }, 500, () => {
     $('.close-side').animate({ height: 'toggle' });
   });
@@ -272,7 +274,6 @@ function closeNav() {
   });
   $('nav ul li').animate({ top: '300px' }, 300);
 }
-closeNav();
 
 function showFormSearch() {
   // ----- Get Value Data From Usr Input -----
