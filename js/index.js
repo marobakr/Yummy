@@ -504,7 +504,8 @@ $('#age').on('input', function (e) {
   preventBtn();
 });
 function validationAge(value, thisTarget) {
-  var regx = /^(?:[1-6]?\d|70)$/;
+  var regx = /^(?:[1-7]?\d|80)$/;
+
   if (regx.test(value)) {
     checkValidationIsTrue(thisTarget);
     $('#validation-age').addClass('d-none');
