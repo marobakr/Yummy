@@ -2,7 +2,7 @@
 
 ## Overview
 
-[Yammy] is a web platform dedicated to the world of culinary delights. From an extensive recipe library and meal inspiration to cooking tips and a vibrant community, our project aims to be the go-to resource for anyone passionate about creating and enjoying delicious meals.
+Yammy is a web platform dedicated to the world of culinary delights. From an extensive recipe library and meal inspiration to cooking tips and a vibrant community, our project aims to be the go-to resource for anyone passionate about creating and enjoying delicious meals.
 
 
 
